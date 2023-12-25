@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../../core/presentation/router/routes.dart';
 import '../../../../../core/presentation/utils/validations_ext.dart';
 import '../../blocs/sign_in/sign_in_bloc.dart';
 import '../../mixins/auth_form_mixin.dart';
@@ -53,7 +54,7 @@ class SignInScreen extends ConsumerWidget with AuthFormMixin {
                 ),
                 const SizedBox(height: 20),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () => SignUpRoute().push(context),
                   child: const Text('Create a new account'),
                 ),
               ],

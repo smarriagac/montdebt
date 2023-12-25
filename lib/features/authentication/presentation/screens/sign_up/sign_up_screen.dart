@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../../core/presentation/router/routes.dart';
 import '../../../../../core/presentation/utils/validations_ext.dart';
 import '../../blocs/sign_up/sign_up_bloc.dart';
 import '../../mixins/auth_form_mixin.dart';
@@ -56,7 +59,7 @@ class SignUpScreen extends ConsumerWidget with AuthFormMixin {
                   onPressed: state.email.isValidEmail &&
                           state.password.isValidPassword &&
                           state.name.isValidName
-                      ? () {}
+                      ? () => _submit(context, bloc)
                       : null,
                   child: const Text('Sign Up'),
                 ),
@@ -66,6 +69,22 @@ class SignUpScreen extends ConsumerWidget with AuthFormMixin {
           ),
         ),
       ),
+    );
+  }
+
+  Future<void> _submit(BuildContext context, SingUpBloc bloc) async {
+    final result = await bloc.submit();
+    if (!context.mounted) return;
+    result.when(
+      left: (_) => ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Error'),
+        ),
+      ),
+      right: (_) {
+        log('USUARIO $_');
+        HomeRoute().go(context);
+      },
     );
   }
 }

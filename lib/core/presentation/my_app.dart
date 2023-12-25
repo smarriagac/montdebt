@@ -9,7 +9,9 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // await ref.read(sessionBlocProvider.notifier).init();
     final AsyncValue<GoRouter> gorouter = ref.watch(routerProvider);
+
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: gorouter.when(

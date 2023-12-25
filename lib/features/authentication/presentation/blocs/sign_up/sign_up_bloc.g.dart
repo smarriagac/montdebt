@@ -8,11 +8,12 @@ part of 'sign_up_bloc.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$singUpBlocHash() => r'18cd14af0e29f83642be9c5375492728f72f5f3b';
+String _$singUpBlocHash() => r'3158dc3d1e722bb2950b54eef13631b39857534d';
 
 /// See also [SingUpBloc].
 @ProviderFor(SingUpBloc)
-final singUpBlocProvider = NotifierProvider<SingUpBloc, SignUpState>.internal(
+final singUpBlocProvider =
+    AutoDisposeNotifierProvider<SingUpBloc, SignUpState>.internal(
   SingUpBloc.new,
   name: r'singUpBlocProvider',
   debugGetCreateSourceHash:
@@ -21,6 +22,6 @@ final singUpBlocProvider = NotifierProvider<SingUpBloc, SignUpState>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef _$SingUpBloc = Notifier<SignUpState>;
+typedef _$SingUpBloc = AutoDisposeNotifier<SignUpState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -6,11 +8,13 @@ import '../session/session_bloc.dart';
 
 part 'routes_bloc.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 Future<GoRouter> router(RouterRef ref) async {
-  await ref.read(sessionBlocProvider.notifier).init();
+  // await ref.read(sessionBlocProvider.notifier).init();
 
   final result = ref.watch(sessionBlocProvider);
+
+  log('SESSION PROIVIDER: $result ');
 
   return GoRouter(
     initialLocation: result.maybeWhen(

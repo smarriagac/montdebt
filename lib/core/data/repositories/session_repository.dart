@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../domain/repositories/session_repository.dart';
@@ -17,6 +19,7 @@ class SessionRepositoryImpl implements SessionRepository {
   FutureEither<SessionFailure, UserModel> getCurrentAuthenticatedUser() async {
     final user = _authClient.currentUser;
 
+    log('USUARIO PROVIDER: $user');
     if (user == null) {
       return Either.left(
         SessionFailure(),
