@@ -1,11 +1,19 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import '../../domain/entities/user.dart';
+import '../../typedefs.dart';
 
-part 'user_model.freezed.dart';
+class UserModel extends User {
+  const UserModel({
+    required super.id,
+    required super.name,
+  });
 
-@freezed
-class UserModel with _$UserModel {
-  factory UserModel({
+  factory UserModel.fromSupabaseUser({
     required String id,
-    required String name,
-  }) = _UserModel;
+    required Json metadata,
+  }) {
+    return UserModel(
+      id: id,
+      name: metadata['name'] ?? 'test user',
+    );
+  }
 }

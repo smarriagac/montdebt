@@ -29,3 +29,19 @@ class SignUpRoute extends GoRouteData {
     return const SignUpScreen();
   }
 }
+
+@TypedGoRoute<HomeRoute>(
+  path: HomeRoute.path,
+)
+class HomeRoute extends GoRouteData {
+  static const path = '/home';
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const Scaffold(
+      body: Center(
+        child: Text('hola mundo'),
+      ),
+    );
+  }
+}
