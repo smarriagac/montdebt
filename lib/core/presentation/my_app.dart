@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: const SignUpScreen(),
         darkTheme: ThemeData.dark(),
         themeMode: ThemeMode.dark,
