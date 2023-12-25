@@ -1,8 +1,8 @@
-import '../../typedefs.dart';
 import '../../failures/session_failure.dart';
+import '../../typedefs.dart';
 import '../entities/user.dart';
 
-abstract class SessionRepository {
+abstract interface class SessionRepository {
   FutureEither<SessionFailure, User> getCurrentAuthenticatedUser();
   Future<void> signOut();
 }

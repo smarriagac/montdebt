@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../features/authentication/presentation/screens/sign_up/sign_up_screen.dart';
+import 'blocs/routes/routes_bloc.dart';
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-      child: MaterialApp(
+      child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
-        home: const SignUpScreen(),
         darkTheme: ThemeData.dark(),
         themeMode: ThemeMode.dark,
+        routerConfig: ref.watch(goRouterConfigProvider),
       ),
     );
   }
