@@ -10,15 +10,16 @@ part 'routes_bloc.g.dart';
 
 @Riverpod(keepAlive: true)
 Future<GoRouter> router(RouterRef ref) async {
-  // await ref.read(sessionBlocProvider.notifier).init();
+  await ref.read(sessionBlocProvider.notifier).init();
 
   final result = ref.watch(sessionBlocProvider);
 
   log('SESSION PROIVIDER: $result ');
 
   return GoRouter(
+    navigatorKey: rootNavigatorKey,
     initialLocation: result.maybeWhen(
-      loaded: (user) => user == null ? SignInRoute.path : HomeRoute.path,
+      loaded: (user) => user == null ? SignInRoute.path : ToDoRoute.path,
       orElse: () => SignInRoute.path,
     ),
     routes: $appRoutes,

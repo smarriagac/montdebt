@@ -84,7 +84,7 @@ class SignUpScreen extends ConsumerWidget with AuthFormMixin {
       ),
       right: (_) {
         log('USUARIO $_');
-        HomeRoute().go(context);
+        ToDoRoute().go(context);
       },
     );
   }

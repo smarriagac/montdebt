@@ -71,7 +71,7 @@ class SignInScreen extends ConsumerWidget with AuthFormMixin {
     if (!context.mounted) return;
 
     result.when(
-      right: (_) => HomeRoute().go(context),
+      right: (_) => ToDoRoute().go(context),
       left: (_) => ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Error'),
