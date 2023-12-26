@@ -9,7 +9,7 @@ part 'sign_out_provider.g.dart';
 
 @riverpod
 SignOutUseCase signOutUseCase(SignOutUseCaseRef ref) {
-  return SignOutUseCase(
+  return SignOutUseCaseImpl(
     sessionRepository: ref.watch(sessionRepositoryProvider),
     notificationsRepository: ref.watch(notificationRepositoryProvider),
     websocketRepository: ref.watch(webSocketRepositoryProvider),

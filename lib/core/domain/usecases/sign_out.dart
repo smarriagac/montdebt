@@ -2,8 +2,12 @@ import '../repositories/push_notifications_repository.dart';
 import '../repositories/session_repository.dart';
 import '../repositories/websocket_repository.dart';
 
-class SignOutUseCase {
-  SignOutUseCase({
+abstract class SignOutUseCase {
+  Future<void> call();
+}
+
+class SignOutUseCaseImpl implements SignOutUseCase {
+  SignOutUseCaseImpl({
     required SessionRepository sessionRepository,
     required PushNotificationsRepository notificationsRepository,
     required WebsocketRepository websocketRepository,
@@ -15,6 +19,7 @@ class SignOutUseCase {
   final PushNotificationsRepository _notificationsRepository;
   final WebsocketRepository _websocketRepository;
 
+  @override
   Future<void> call() async {
     await _sessionRepository.signOut();
     await _websocketRepository.disconnect();
