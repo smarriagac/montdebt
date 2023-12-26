@@ -48,7 +48,7 @@ class SignInScreen extends ConsumerWidget with AuthFormMixin {
                   color: Colors.blue,
                   onPressed:
                       state.email.isValidEmail && state.password.isValidPassword
-                          ? () => _submit(context, bloc)
+                          ? () => _submit(context)
                           : null,
                   child: const Text('Sign In'),
                 ),
@@ -65,8 +65,10 @@ class SignInScreen extends ConsumerWidget with AuthFormMixin {
     );
   }
 
-  Future<void> _submit(BuildContext context, SingInBloc bloc) async {
-    final result = await bloc.submit();
+  Future<void> _submit(BuildContext context) async {
+    final prov =
+        ProviderScope.containerOf(context).read(singInBlocProvider.notifier);
+    final result = await prov.submit();
 
     if (!context.mounted) return;
 
