@@ -8,7 +8,7 @@ part of 'sign_up_bloc.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$singUpBlocHash() => r'68ee6a77376c96d36a7b03cf4d2856016071e282';
+String _$singUpBlocHash() => r'e9200c9fa0e41b9b88efbd90acce797d74fdf108';
 
 /// See also [SingUpBloc].
 @ProviderFor(SingUpBloc)

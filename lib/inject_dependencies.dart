@@ -1,26 +1,16 @@
-import 'package:get_it/get_it.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-import 'core/data/repositories/session_repository.dart';
-import 'core/domain/repositories/session_repository.dart';
-import 'features/authentication/data/authentication_repository_impl.dart';
-import 'features/authentication/domain/repositories/authentication_repository.dart';
-
-final sl = GetIt.I;
+import 'core/presentation/blocs/repositories_provider/authentication_repository/authentication_reposiotry_provider.dart';
+import 'core/presentation/blocs/repositories_provider/sesion_repository/session_repository_provider.dart';
 
 Future<void> injectDependencies() async {
   await Supabase.initialize(
     url: const String.fromEnvironment('supabaseUrl'),
     anonKey: const String.fromEnvironment('supabaseAnonKey'),
   );
+}
 
-  final GoTrueClient supabaseClient = Supabase.instance.client.auth;
-
-  sl.registerSingleton<SessionRepository>(
-    SessionRepositoryImpl(authClient: supabaseClient),
-  );
-
-  sl.registerLazySingleton<AuthenticationRepository>(
-    () => AuthenticationRepositoryImpl(authClient: supabaseClient),
-  );
+class Repositories {
+  static final auth = authenticationRepositoryProvider;
+  static final session = sessionRepositoryProvider;
 }
