@@ -3,6 +3,6 @@ import '../../typedefs.dart';
 import '../entities/user.dart';
 
 abstract interface class SessionRepository {
-  FutureEither<SessionFailure, User> getCurrentAuthenticatedUser();
+  FutureEither<SessionFailure, UserProfile> getCurrentAuthenticatedUser();
   Future<void> signOut();
 }

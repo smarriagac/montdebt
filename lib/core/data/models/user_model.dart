@@ -1,7 +1,7 @@
 import '../../domain/entities/user.dart';
 import '../../typedefs.dart';
 
-class UserModel extends User {
+class UserModel extends UserProfile {
   const UserModel({
     required super.id,
     required super.name,

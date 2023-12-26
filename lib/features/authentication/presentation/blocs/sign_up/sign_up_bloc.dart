@@ -33,7 +33,7 @@ class SingUpBloc extends _$SingUpBloc {
     );
   }
 
-  FutureEither<Failure, User> submit() async {
+  FutureEither<Failure, UserProfile> submit() async {
     final AuthenticationRepository authenticationRepository = sl.get();
 
     final result = await authenticationRepository.signUp(

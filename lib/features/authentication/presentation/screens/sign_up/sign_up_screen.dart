@@ -17,6 +17,7 @@ class SignUpScreen extends ConsumerWidget with AuthFormMixin {
     final state = ref.watch(singUpBlocProvider);
 
     return Scaffold(
+      appBar: AppBar(),
       body: SafeArea(
         child: Form(
           autovalidateMode: AutovalidateMode.onUserInteraction,

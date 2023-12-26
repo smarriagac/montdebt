@@ -20,8 +20,23 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
     required String email,
     required String password,
   }) async {
-    // TODO: implement signIn
-    throw UnimplementedError();
+    try {
+      final response = await _authClient.signInWithPassword(
+        email: email,
+        password: password,
+      );
+      final user = response.user!;
+      return Either.right(
+        UserModel.fromSupabaseUser(
+          id: user.id,
+          metadata: user.appMetadata,
+        ),
+      );
+    } catch (e) {
+      log('ERROR $e');
+
+      return Either.left(Failure());
+    }
   }
 
   @override

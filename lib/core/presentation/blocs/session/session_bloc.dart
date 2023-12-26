@@ -26,7 +26,7 @@ class SessionBloc extends _$SessionBloc {
     );
   }
 
-  void setUser(User user) {
+  void setUser(UserProfile user) {
     state = SessionState.loaded(user);
   }
 }
